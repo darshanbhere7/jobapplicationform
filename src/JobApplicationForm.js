@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 
 const JobApplicationForm = () => {
-    const [formData, setFormData] = useState({
+    const initialFormState = {
         firstName: '',
         lastName: '',
         email: '',
@@ -15,8 +15,9 @@ const JobApplicationForm = () => {
         jobProfile: '',
         skills: '',
         termsAccepted: false
-    });
+    };
 
+    const [formData, setFormData] = useState(initialFormState);
     const [errors, setErrors] = useState({});
 
     const handleChange = (e) => {
@@ -58,28 +59,19 @@ const JobApplicationForm = () => {
         if (validateForm()) {
             console.log(formData);
             Swal.fire('Success', 'Your job application has been submitted!', 'success');
-            setFormData({
-                firstName: '',
-                lastName: '',
-                email: '',
-                phone: '',
-                password: '',
-                location: '',
-                qualification: '',
-                experience: '',
-                yearsOfExperience: '',
-                jobProfile: '',
-                skills: '',
-                termsAccepted: false
-            });
+            setFormData(initialFormState); // Reset the form after submission
         } else {
             Swal.fire('Error', 'Please fix the errors in the form.', 'error');
         }
     };
 
+    const handleReset = () => {
+        setFormData(initialFormState); // Reset form data to the initial state
+        setErrors({}); // Clear all errors
+    };
+
     return (
         <div>
-            {/* <h1>Job Application Form</h1> */}
             <form onSubmit={handleSubmit}>
                 <label className="required">First Name</label>
                 <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} />
@@ -139,7 +131,10 @@ const JobApplicationForm = () => {
                 </div>
                 {errors.termsAccepted && <div className="error">{errors.termsAccepted}</div>}
 
-                <button type="submit">Submit</button>
+                <div className="button-group">
+                    <button type="submit">Submit</button>
+                    <button type="button" onClick={handleReset}>Reset</button>
+                </div>
             </form>
         </div>
     );
