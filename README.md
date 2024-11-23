@@ -28,7 +28,8 @@ The **Job Application Form** is a web-based application built with **React**. It
 
 ## Screenshots
 
-![Job Application Form Screenshot](https://your-screenshot-link.com) <!-- Replace with actual screenshot URL -->
+![image](https://github.com/user-attachments/assets/9a528d00-f62f-43ef-90f7-b9d5a858cac8)
+
 
 ## Installation
 
