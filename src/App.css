@@ -185,3 +185,21 @@ textarea {
     width: 95% !important; /* Take up most of the screen on small devices */
   }
 }  
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.button-group button {
+  width: 48%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button-group button:hover {
+  opacity: 0.9;
+}
